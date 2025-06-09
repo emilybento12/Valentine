@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz do Amor 💖</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+    h1 {
+      color: #d63384;
+    }
+    .question {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #ff69b4;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #ff85c1;
+    }
+    .result {
+      display: none;
+      font-size: 1.2em;
+      margin-top: 20px;
+      color: #c71585;
+    }
+    .heart {
+      font-size: 2em;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💖 Quiz do Amor 💖</h1>
+    <div id="quiz">
+      <div class="question" id="question">Carregando...</div>
+      <div class="options" id="options"></div>
+    </div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "Qual a data do nosso primeiro beijo?",
+        options: ["04 de novembro", "14 de fevereiro", "30 de junho"],
+        answer: "04 de novembro"
+      },
+      {
+        question: "Qual a data do pedido de namoro?",
+        options: ["01 de abril", "10 de março", "25 de dezembro"],
+        answer: "10 de março"
+      },
+      {
+        question: "Qual a data do pedido de casamento?",
+        options: ["12 de junho", "18 de maio", "20 de agosto"],
+        answer: "18 de maio"
+      },
+      {
+        question: "Qual é o nosso tipo de date favorito?",
+        options: ["Cinema e pipoca", "Viagem surpresa", "Date com comidinhas"],
+        answer: "Date com comidinhas"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const resultEl = document.getElementById('result');
+
+    function loadQuestion() {
+      const current = quizData[currentQuestion];
+      questionEl.textContent = current.question;
+      optionsEl.innerHTML = '';
+
+      current.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.onclick = () => selectAnswer(option);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(selected) {
+      if (selected === quizData[currentQuestion].answer) {
+        score++;
+      }
+
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('quiz').style.display = 'none';
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = `
+        <p class="heart">❤️</p>
+        <p>Você acertou ${score} de ${quizData.length}!</p>
+        <p>${score === 4 ? "Você é perfeito! Nosso amor é lindo! 💘" : "Mesmo errando, eu te amo muito! 😘"}</p>
+      `;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
