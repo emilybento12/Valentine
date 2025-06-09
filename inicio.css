@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffe0ec, #ffd1f4);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tela-inicial {
+  text-align: center;
+  background-color: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  width: 90%;
+  max-width: 350px;
+}
+
+h1 {
+  color: #d63384;
+  font-size: 24px;
+}
+
+p {
+  color: #555;
+  margin: 15px 0;
+}
+
+.img-casal {
+  margin-top: 15px;
+  width: 80%;
+  max-width: 250px;
+  border-radius: 20px;
+}
+
+.btn-comecar {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #ff69b4;
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-comecar:hover {
+  background-color: #e0559f;
+}

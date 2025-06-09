@@ -1,7 +1,7 @@
 const questions = [
   {
     question: "Qual a data do nosso primeiro beijo?",
-    options: ["04 de novembro", "10 de março", "18 de maio", "01 de janeiro"],
+    options: ["04 de novembro", "17 dezembro", "28 de novembro", "04 de dezembro"],
     answer: "04 de novembro"
   },
   {
